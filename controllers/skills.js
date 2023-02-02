@@ -5,6 +5,9 @@ module.exports = {
     show,
     newSkill,
     create,
+    delSkill,
+    edit,
+    update,
 }
 
 function index(req, res) {
@@ -30,4 +33,21 @@ function create(req, res) {
     Skill.create(req.body);
     res.redirect('/skills');
 }
+function delSkill(req, res) {
+    Skill.deleteOne(req.params.id);
+    res.redirect('/skills');
+}
 
+function edit(req, res) {
+    const skill = Skill.getOne(req.params.id);
+    res.render('skills/edit', {
+        title: 'edit skill',
+        skill,
+    })
+}
+
+function update(req, res) {
+    req.body.level = req.body.level;
+    Skill.update(req.params.id, req.body);
+    res.redirect(`/skills/${req.params.id}`);
+}

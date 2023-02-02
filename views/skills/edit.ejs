@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<style>
+    .new {
+        margin: 40vh 20vw;
+    }
+</style>
+<div class="new">  
+<form action="/skills/<%= skill.id %>?_method=PUT" method="POST" autocomplete="off">
+    <input type="text" value="<%= skill.name %>" name="name" style="width: 50vw; height: 4vh" disabled />
+    <select name="level" value="<%= skill.level %>" >
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advance">Advance</option>
+        </select>
+    <button>Add</button>
+</form> 
+</div>   
+</style>
